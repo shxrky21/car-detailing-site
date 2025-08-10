@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Shine | Premium Car Detailing Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements Tailwind can't handle easily */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 80vh;
+        }
+        
+        .before-after-container {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+        }
+        
+        .before-after-slider {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .before-image {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .slider-handle {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: white;
+            cursor: ew-resize;
+        }
+        
+        .slider-handle:after {
+            content: "↔";
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+            background: white;
+            color: #1e40af;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-blue-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-car-side text-2xl text-blue-300"></i>
+                <span class="text-xl font-bold">Diamond <span class="text-blue-300">Shine</span></span>
+            </div>
+            
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#services" class="hover:text-blue-300 transition">Services</a>
+                <a href="#pricing" class="hover:text-blue-300 transition">Pricing</a>
+                <a href="#gallery" class="hover:text-blue-300 transition">Gallery</a>
+                <a href="#testimonials" class="hover:text-blue-300 transition">Testimonials</a>
+                <a href="#contact" class="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded transition">Book Now</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-blue-800 px-4 py-2">
+            <div class="flex flex-col space-y-3">
+                <a href="#services" class="hover:text-blue-300 transition py-1">Services</a>
+                <a href="#pricing" class="hover:text-blue-300 transition py-1">Pricing</a>
+                <a href="#gallery" class="hover:text-blue-300 transition py-1">Gallery</a>
+                <a href="#testimonials" class="hover:text-blue-300 transition py-1">Testimonials</a>
+                <a href="#contact" class="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded transition text-center">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Professional <span class="text-blue-300">Car Detailing</span></h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Restore your vehicle's showroom shine with our premium detailing services</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition">Book an Appointment</a>
+                <a href="#services" class="bg-transparent hover:bg-blue-900 border-2 border-white text-white px-6 py-3 rounded-lg font-semibold transition">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-blue-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-4">
+                    <div class="text-4xl font-bold mb-2">1,250+</div>
+                    <div class="text-blue-200">Cars Detailed</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-bold mb-2">98%</div>
+                    <div class="text-blue-200">Satisfaction Rate</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-bold mb-2">5</div>
+                    <div class="text-blue-200">Star Average Rating</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-bold mb-2">24/7</div>
+                    <div class="text-blue-200">Customer Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our <span class="text-blue-600">Services</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We offer a comprehensive range of detailing services to meet all your vehicle's needs</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-spray-can text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Exterior Detailing</h3>
+                        <p class="text-gray-600 mb-4">Complete exterior cleaning including hand wash, clay bar treatment, polishing, and waxing for a showroom finish.</p>
+                        <ul class="text-gray-700 space-y-1">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Paint decontamination</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Scratch removal</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Ceramic coating available</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-couch text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Interior Detailing</h3>
+                        <p class="text-gray-600 mb-4">Deep cleaning of your vehicle's interior including seats, carpets, dashboard, and all surfaces.</p>
+                        <ul class="text-gray-700 space-y-1">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Leather conditioning</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Odor elimination</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> UV protection</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-star text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Full Detailing Package</h3>
+                        <p class="text-gray-600 mb-4">Our most comprehensive service combining both exterior and interior detailing for a complete transformation.</p>
+                        <ul class="text-gray-700 space-y-1">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Engine bay cleaning</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Headlight restoration</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Wheel and tire treatment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Transparent <span class="text-blue-600">Pricing</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">No hidden fees. Quality service at fair prices.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Package -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-blue-600 text-white py-4 px-6">
+                        <h3 class="text-xl font-bold">Basic Detail</h3>
+                        <div class="mt-2">
+                            <span class="text-3xl font-bold">$99</span>
+                            <span class="text-blue-200">/vehicle</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Exterior hand wash</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Interior vacuum</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Window cleaning</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Tire dressing</li>
+                            <li class="flex items-center"><i class="fas fa-times text-gray-400 mr-2"></i> <span class="text-gray-400">No waxing</span></li>
+                        </ul>
+                        <a href="#contact" class="block text-center bg-gray-200 hover:bg-blue-600 hover:text-white text-blue-600 font-semibold py-2 px-4 rounded transition">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Popular Package -->
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden transform scale-105 z-10 border-2 border-blue-500">
+                    <div class="bg-blue-700 text-white py-4 px-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold">Premium Detail</h3>
+                                <div class="mt-2">
+                                    <span class="text-3xl font-bold">$199</span>
+                                    <span class="text-blue-200">/vehicle</span>
+                                </div>
+                            </div>
+                            <span class="bg-yellow-400 text-blue-900 text-xs font-bold px-2 py-1 rounded-full">MOST POPULAR</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Everything in Basic</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Hand wax application</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Interior shampoo</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Leather conditioning</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Clay bar treatment</li>
+                        </ul>
+                        <a href="#contact" class="block text-center bg-blue-600 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded transition">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Premium Package -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-blue-600 text-white py-4 px-6">
+                        <h3 class="text-xl font-bold">Executive Detail</h3>
+                        <div class="mt-2">
+                            <span class="text-3xl font-bold">$349</span>
+                            <span class="text-blue-200">/vehicle</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Everything in Premium</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Paint correction</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Ceramic coating</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Engine bay cleaning</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Headlight restoration</li>
+                        </ul>
+                        <a href="#contact" class="block text-center bg-gray-200 hover:bg-blue-600 hover:text-white text-blue-600 font-semibold py-2 px-4 rounded transition">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-4">Not sure which package is right for you?</p>
+                <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition">Get a Free Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery / Before & After Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our <span class="text-blue-600">Work</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">See the transformation we can bring to your vehicle</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Before/After 1 -->
+                <div class="before-after-container rounded-lg shadow-lg">
+                    <div class="before-after-slider">
+                        <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="After detailing" class="w-full h-full object-cover">
+                        <div class="before-image">
+                            <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80&blur=20" alt="Before detailing" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                </div>
+                
+                <!-- Before/After 2 -->
+                <div class="before-after-container rounded-lg shadow-lg">
+                    <div class="before-after-slider">
+                        <img src="https://images.unsplash.com/photo-1541899481282-d53b3e38e9c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="After detailing" class="w-full h-full object-cover">
+                        <div class="before-image">
+                            <img src="https://images.unsplash.com/photo-1541899481282-d53b3e38e9c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80&blur=20" alt="Before detailing" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="h-40 overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Detailing work" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+                <div class="h-40 overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1605559421013-3122c0b0a0cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Detailing work" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+                <div class="h-40 overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1605559421130-5a29351850e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Detailing work" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+                <div class="h-40 overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1605559421013-3122c0b0a0cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Detailing work" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Customer <span class="text-blue-600">Testimonials</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it - hear what our customers say</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold mr-4">JS</div>
+                        <div>
+                            <h4 class="font-bold">John Smith</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"I've used many detailing services before, but EliteShine is in a league of their own. My 5-year-old BMW looks brand new after their executive package. Worth every penny!"</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold mr-4">MD</div>
+                        <div>
+                            <h4 class="font-bold">Maria Davis</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"As a busy mom, my minivan was a disaster. The team at EliteShine transformed it completely - they even got the grape juice stains out of the seats! My car smells and looks amazing."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold mr-4">RJ</div>
+                        <div>
+                            <h4 class="font-bold">Robert Johnson</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"The ceramic coating they applied to my new Tesla has made maintenance so much easier. Water beads right off and the paint stays cleaner longer. Professional service from start to finish."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking/Contact Section -->
+    <section id="contact" class="py-16 bg-blue-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to <span class="text-blue-300">Shine?</span></h2>
+                <p class="text-blue-200 max-w-2xl mx-auto">Book your appointment today or contact us with any questions</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <!-- Booking Form -->
+                <div class="bg-white rounded-lg shadow-xl p-6 text-gray-800">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Book Your Detail</h3>
+                    <form id="booking-form">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="service" class="block text-gray-700 font-medium mb-2">Service</label>
+                            <select id="service" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                <option value="">Select a service</option>
+                                <option value="basic">Basic Detail - $99</option>
+                                <option value="premium">Premium Detail - $199</option>
+                                <option value="executive">Executive Detail - $349</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="date" class="block text-gray-700 font-medium mb-2">Preferred Date</label>
+                            <input type="date" id="date" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Special Requests</label>
+                            <textarea id="message" rows="3" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition">Submit Booking</button>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="flex flex-col justify-center">
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-blue-300 text-xl mr-4"></i>
+                                <span>123 Auto Spa Lane, Detailing City, DC 12345</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone-alt text-blue-300 text-xl mr-4"></i>
+                                <span>(555) 123-4567</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-blue-300 text-xl mr-4"></i>
+                                <span>info@eliteshine.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Business Hours</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>Monday - Friday</span>
+                                <span>8:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Saturday</span>
+                                <span>9:00 AM - 4:00 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Sunday</span>
+                                <span>Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h3 class="text-2xl font-bold mb-4">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-blue-800 hover:bg-blue-700 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-800 hover:bg-blue-700 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-800 hover:bg-blue-700 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-800 hover:bg-blue-700 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-yelp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked <span class="text-blue-600">Questions</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Get answers to common questions about our detailing services</p>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition">
+                        <span class="text-left font-medium">How long does a typical detailing service take?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-4 border-t border-gray-200">
+                        <p class="text-gray-600">Service duration depends on the package you choose and the condition of your vehicle. Our Basic Detail typically takes 1.5-2 hours, Premium Detail takes 3-4 hours, and our Executive Detail can take 5-6 hours or more for extensive paint correction.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition">
+                        <span class="text-left font-medium">Do you offer mobile detailing services?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-4 border-t border-gray-200">
+                        <p class="text-gray-600">Yes! We offer mobile detailing within a 15-mile radius of our shop location. Mobile services are perfect for those who prefer the convenience of having their vehicle detailed at home or work. There is a small travel fee for locations beyond 5 miles.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition">
+                        <span class="text-left font-medium">How often should I get my car detailed?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-4 border-t border-gray-200">
+                        <p class="text-gray-600">We recommend a basic detail every 3-4 months to maintain your vehicle's appearance. For premium protection, consider our ceramic coating which can last 1-2 years with proper maintenance. Heavy-use vehicles or those exposed to harsh conditions may benefit from more frequent detailing.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition">
+                        <span class="text-left font-medium">What's the difference between wax and ceramic coating?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden p-4 border-t border-gray-200">
+                        <p class="text-gray-600">Traditional wax provides a glossy finish and some protection but typically lasts only 1-3 months. Ceramic coating forms a semi-permanent bond with your paint, offering superior protection against UV rays, chemical stains, and minor scratches that can last several years. It also makes your car much easier to clean.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-car-side text-2xl text-blue-400"></i>
+                        <span class="text-xl font-bold">Diamond <span class="text-blue-400">Shine</span></span>
+                    </div>
+                    <p class="text-gray-400">Premium auto detailing services that restore your vehicle's showroom shine using the highest quality products and techniques.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-gray-400 hover:text-blue-400 transition">Services</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-blue-400 transition">Pricing</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-blue-400 transition">Gallery</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-blue-400 transition">Testimonials</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-blue-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Exterior Detailing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Interior Detailing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Ceramic Coating</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Paint Correction</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Headlight Restoration</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to get special offers and detailing tips.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-lg transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-yelp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Diamond Shine Auto Detailing. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // FAQ accordion
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // Before/After slider functionality
+        const sliders = document.querySelectorAll('.before-after-slider');
+        
+        sliders.forEach(slider => {
+            const beforeImage = slider.querySelector('.before-image');
+            const handle = slider.querySelector('.slider-handle');
+            let isDragging = false;
+            
+            function moveSlider(e) {
+                if (!isDragging) return;
+                
+                const rect = slider.getBoundingClientRect();
+                let x = e.clientX - rect.left;
+                
+                // Constrain within slider bounds
+                x = Math.max(0, Math.min(x, rect.width));
+                
+                const percent = (x / rect.width) * 100;
+                
+                beforeImage.style.width = `${percent}%`;
+                handle.style.left = `${percent}%`;
+            }
+            
+            slider.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                moveSlider(e);
+            });
+            
+            window.addEventListener('mousemove', moveSlider);
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+            
+            // Touch support
+            slider.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                moveSlider(e.touches[0]);
+            });
+            
+            window.addEventListener('touchmove', (e) => {
+                if (isDragging) {
+                    moveSlider(e.touches[0]);
+                }
+            });
+            
+            window.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form submission
+        const bookingForm = document.getElementById('booking-form');
+        
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // In a real implementation, you would send this data to your server
+            alert('Thank you for your booking request! We will contact you shortly to confirm your appointment.');
+            bookingForm.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
